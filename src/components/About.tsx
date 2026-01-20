@@ -1,9 +1,14 @@
+import tutorPortrait from "../assets/ruwindri-img-1.jpeg";
+
 export default function About() {
   return (
     <section className="about" id="about">
-      <div className="container about-content">
-        <div className="about-intro">
-          <h2>About Me</h2>
+        <div className="container about-content">
+          <div className="about-intro">
+            <div className="about-photo">
+              <img src={tutorPortrait} alt="Ruwindri, private tutor" />
+            </div>
+            <h2>About Me</h2>
           <p>
             I am a dedicated and friendly tutor who genuinely enjoys helping students grow in
             confidence and reach their academic potential. I graduated from Our Lady of Mercy
