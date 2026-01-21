@@ -237,7 +237,7 @@ button {
 ========================= */
 .study-materials {
   padding: var(--section-pad) 0;
-  background: radial-gradient(circle at top, #ffffff 0%, var(--bg-light) 60%, #f1ecdf 100%);
+  background: radial-gradient(circle at 70% 20%, rgba(223, 228, 255, 0.75), rgba(255, 255, 255, 0) 60%);
 }
 
 .study-header {

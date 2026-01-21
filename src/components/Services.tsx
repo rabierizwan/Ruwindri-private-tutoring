@@ -15,9 +15,9 @@ export default function Services() {
               <div className="subject-group">
                 <h4>Mathematics</h4>
                 <ul>
-                  <li>Year 7 – Year 10</li>
-                  <li>Standard Year 11 – Year 12</li>
-                  <li>Advanced Year 11 – Year 12</li>
+                  <li>Year 7 - Year 10</li>
+                  <li>Standard: Year 11 - Year 12</li>
+                  <li>Advanced: Year 11 - Year 12</li>
                   <li>Extension 1</li>
                   <li>Extension 2</li>
                 </ul>
@@ -25,11 +25,11 @@ export default function Services() {
               <div className="subject-group">
                 <h4>English and Other</h4>
                 <ul>
-                  <li>English – Year 7 – Year 10</li>
-                  <li>Standard English – Year 11 – Year 12</li>
-                  <li>Advanced English – Year 11 – Year 12</li>
-                  <li>Legal Studies – Year 11 – Year 12</li>
-                  <li>General Science – Year 7 – Year 10</li>
+                  <li>English: Year 7 – Year 10</li>
+                  <li>Standard English: Year 11 – Year 12</li>
+                  <li>Advanced English: Year 11 – Year 12</li>
+                  <li>Legal Studies: Year 11 – Year 12</li>
+                  <li>General Science: Year 7 – Year 10</li>
                   <li>
                     Medical interviews preparation and guidance from other medical students in
                     Australia (domestic and international)
