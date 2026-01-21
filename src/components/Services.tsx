@@ -49,7 +49,10 @@ export default function Services() {
                   <strong>$65/hour</strong>
                 </div>
                 <div className="pricing-row">
-                  <span>Home tuition</span>
+                  <div className="pricing-row-text">
+                    <span>Home tuition</span>
+                    <small>Prices are not fixed and are open to change depending on location, year level and subject.</small>
+                  </div>
                   <strong>Based on location</strong>
                 </div>
               </div>

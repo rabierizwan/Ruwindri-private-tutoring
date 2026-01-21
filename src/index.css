@@ -17,15 +17,17 @@
   --text-dark: #141236;
   --text-light: #4b4a6a;
   --bg-light: #f9f6ef;
-  --bg-cream: #fffaf1;
+  --bg-cream: #f7f8ff;
+  --card-border: rgba(35, 46, 140, 0.12);
   --card-shadow: 0 14px 30px rgba(23, 16, 107, 0.12);
+  --section-pad: 4.5rem;
   --max-width: 1100px;
 }
 
 body {
   font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
   color: var(--text-dark);
-  background: radial-gradient(circle at top, #ffffff 0%, var(--bg-light) 55%, #f3efe6 100%);
+  background: linear-gradient(180deg, #fef9f0 0%, #edf0ff 45%, #dfe4ff 70%, #fef9f0 100%);
   line-height: 1.6;
 }
 
@@ -52,19 +54,41 @@ button {
    NAVBAR
 ========================= */
 .navbar {
-  /* position: sticky; */
+  position: sticky;
   top: 0;
   z-index: 10;
   background: #fffaf1;
   padding: 1.25rem 0;
   box-shadow: 0 8px 24px rgba(23, 16, 107, 0.08);
   border-bottom: 1px solid rgba(23, 16, 107, 0.06);
+  backdrop-filter: blur(6px);
 }
 
 .navbar-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.navbar-toggle {
+  display: none;
+  background: transparent;
+  color: var(--primary-ink);
+  font-family: "Playfair Display", "Georgia", "Times New Roman", serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid var(--card-border);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links .is-active::after {
+  transform: scaleX(1);
 }
 
 .navbar-brand {
@@ -89,14 +113,73 @@ button {
   font-size: 1.05rem;
   font-family: "Playfair Display", "Georgia", "Times New Roman", serif;
   letter-spacing: 0.01em;
+  position: relative;
+  padding-bottom: 0.2rem;
+}
+
+@media (max-width: 900px) {
+  .navbar-content {
+    align-items: center;
+  }
+
+  .navbar-toggle {
+    display: inline-flex;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: #fffaf1;
+    flex-direction: column;
+    padding: 1rem 1.5rem 1.5rem;
+    gap: 0.4rem;
+    box-shadow: 0 12px 24px rgba(23, 16, 107, 0.12);
+    border-bottom: 1px solid rgba(23, 16, 107, 0.06);
+    display: none;
+  }
+
+  .navbar-links.is-open {
+    display: flex;
+  }
+
+  .navbar a {
+    margin-left: 0;
+    padding: 0.35rem 0;
+  }
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+.navbar a:hover::after,
+.navbar a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.navbar a:focus-visible {
+  outline: 2px solid rgba(36, 53, 201, 0.35);
+  outline-offset: 4px;
+  border-radius: 6px;
 }
 
 /* =========================
    HERO SECTION
 ========================= */
 .hero {
-  padding: 4.5rem 0;
-  background: linear-gradient(140deg, #fef9f0 0%, #edf0ff 55%, #dfe4ff 100%);
+  padding: var(--section-pad) 0;
+  background: radial-gradient(circle at 20% 20%, rgba(223, 228, 255, 0.7), rgba(255, 255, 255, 0) 60%);
   border-bottom: 1px solid rgba(23, 16, 107, 0.08);
 }
 
@@ -139,7 +222,7 @@ button {
   width: 100%;
   border-radius: 22px;
   box-shadow: 0 18px 36px rgba(23, 16, 107, 0.18);
-  border: 1px solid rgba(23, 16, 107, 0.08);
+  border: 1px solid var(--card-border);
 }
 
 @media (min-width: 900px) {
@@ -152,7 +235,7 @@ button {
    STUDY MATERIALS PAGE
 ========================= */
 .study-materials {
-  padding: 5rem 0;
+  padding: var(--section-pad) 0;
   background: radial-gradient(circle at top, #ffffff 0%, var(--bg-light) 60%, #f1ecdf 100%);
 }
 
@@ -192,7 +275,7 @@ button {
   border-radius: 18px;
   padding: 2rem;
   box-shadow: var(--card-shadow);
-  border: 1px solid rgba(23, 16, 107, 0.08);
+  border: 1px solid var(--card-border);
 }
 
 .study-card h2 {
@@ -209,8 +292,8 @@ button {
    ABOUT SECTION
 ========================= */
 .about {
-  padding: 4.5rem 0;
-  background: var(--bg-cream);
+  padding: var(--section-pad) 0;
+  background: transparent;
 }
 
 .about-content {
@@ -218,28 +301,24 @@ button {
   gap: 2.5rem;
 }
 
-.about-intro h2 {
-  color: var(--primary-ink);
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
+.about-grid {
+  display: grid;
+  gap: 2rem;
 }
 
-.about-photo {
-  max-width: 320px;
-  margin-bottom: 1.5rem;
+.about-media {
+  display: grid;
+  gap: 1.5rem;
 }
 
-.about-photo img {
+.about-photo img,
+.about-gallery img {
   width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
   border-radius: 18px;
   box-shadow: 0 16px 32px rgba(23, 16, 107, 0.15);
-  border: 1px solid rgba(23, 16, 107, 0.08);
-}
-
-.about-intro p {
-  color: var(--text-light);
-  margin-bottom: 1.5rem;
-  max-width: 760px;
+  border: 1px solid var(--card-border);
 }
 
 .about-details {
@@ -252,7 +331,7 @@ button {
   border-radius: 14px;
   padding: 1.75rem 1.9rem;
   box-shadow: var(--card-shadow);
-  border: 1px solid rgba(23, 16, 107, 0.08);
+  border: 1px solid var(--card-border);
 }
 
 .about-card h3 {
@@ -267,7 +346,10 @@ button {
 }
 
 .about-card li {
-  margin-bottom: 0.4rem;
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 8px;
+  padding: 4px 10px;
 }
 
 .about-card p {
@@ -275,10 +357,48 @@ button {
   margin-bottom: 1rem;
 }
 
+.about-gallery {
+  display: grid;
+  
+  gap: 1.2rem;
+}
+
+.about-texts {
+  display: grid;
+  gap: 2rem;
+}
+
+.about-texts h2 {
+  color: var(--primary-ink);
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.about-texts p {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  max-width: 640px;
+}
+
 @media (min-width: 900px) {
-  .about-content {
-    grid-template-columns: 1.1fr 1fr;
+  .about-grid {
+    grid-template-columns: 1.05fr 0.95fr;
     align-items: start;
+  }
+
+  .about-texts {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .about-grid {
+    grid-template-columns: 1fr 0.95fr 1fr;
+  }
+
+  .about-texts {
+    grid-column: 1 / -1;
   }
 }
 
@@ -286,7 +406,8 @@ button {
    SERVICES PREVIEW
 ========================= */
 .services {
-  padding: 4rem 0;
+  padding: var(--section-pad) 0;
+  background: transparent;
 }
 
 .services-content {
@@ -317,7 +438,7 @@ button {
   border-radius: 16px;
   box-shadow: var(--card-shadow);
   color: var(--primary-ink);
-  border: 1px solid rgba(23, 16, 107, 0.08);
+  border: 1px solid var(--card-border);
   text-align: left;
 }
 
@@ -371,8 +492,19 @@ button {
   padding: 0.75rem 0.9rem;
   background: white;
   border-radius: 12px;
-  border: 1px solid rgba(23, 16, 107, 0.08);
+  border: 1px solid var(--card-border);
   color: var(--text-dark);
+}
+
+.pricing-row-text {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.pricing-row-text small {
+  
+  color: var(--text-light);
+  font-size: 0.62rem;
 }
 
 .pricing-row strong {
@@ -397,8 +529,8 @@ button {
    CONTACT CTA
 ========================= */
 .contact-cta {
-  padding: 4rem 0;
-  background: linear-gradient(140deg, #fef9f0 0%, #edf0ff 55%, #dfe4ff 100%);
+  padding: var(--section-pad) 0;
+  background: radial-gradient(circle at 80% 20%, rgba(223, 228, 255, 0.7), rgba(255, 255, 255, 0) 60%);
   color: var(--text-dark);
   text-align: center;
 }
@@ -435,7 +567,7 @@ button {
   background: var(--bg-cream);
   border-radius: 16px;
   padding: 1.8rem;
-  border: 1px solid rgba(23, 16, 107, 0.1);
+  border: 1px solid var(--card-border);
   display: grid;
   gap: 1rem;
   box-shadow: var(--card-shadow);
