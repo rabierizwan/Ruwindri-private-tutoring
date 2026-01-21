@@ -8,7 +8,9 @@ import ContactCTA from './components/ContactCTA';
 import StudyMaterials from "./components/StudyMaterials";
 
 function App() {
-  const path = window.location.pathname;
+  const path =
+    new URLSearchParams(window.location.search).get("path") ||
+    window.location.pathname;
 
   if (path === "/study-materials") {
     return (
