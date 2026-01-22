@@ -52,6 +52,8 @@ export default function Reviews() {
 
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchDeltaX, setTouchDeltaX] = useState(0);
 
   useEffect(() => {
     if (paused) {
@@ -66,11 +68,38 @@ export default function Reviews() {
   }, [paused, reviews.length]);
 
   const goPrev = () => {
-    setIndex((current) => (current - 1 + reviews.length) % reviews.length - 1);
+    setIndex((current) => (current - 1 + reviews.length) % reviews.length);
   };
 
   const goNext = () => {
-    setIndex((current) => (current + 1) % reviews.length - 1);
+    setIndex((current) => (current + 1) % reviews.length);
+  };
+
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(event.touches[0].clientX);
+    setTouchDeltaX(0);
+  };
+
+  const handleTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (touchStartX === null) {
+      return;
+    }
+    setTouchDeltaX(event.touches[0].clientX - touchStartX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX === null) {
+      return;
+    }
+
+    if (touchDeltaX > 50) {
+      goPrev();
+    } else if (touchDeltaX < -50) {
+      goNext();
+    }
+
+    setTouchStartX(null);
+    setTouchDeltaX(0);
   };
 
   return (
@@ -81,7 +110,13 @@ export default function Reviews() {
     >
       <div className="container">
         <h2 id="reviews-title">Reviews</h2>
-        <div className="reviews-carousel" aria-label="Client reviews">
+        <div
+          className="reviews-carousel"
+          aria-label="Client reviews"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <button
             className="reviews-arrow reviews-arrow-prev"
             type="button"
