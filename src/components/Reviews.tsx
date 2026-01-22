@@ -66,11 +66,11 @@ export default function Reviews() {
   }, [paused, reviews.length]);
 
   const goPrev = () => {
-    setIndex((current) => (current - 1 + reviews.length) % reviews.length);
+    setIndex((current) => (current - 1 + reviews.length) % reviews.length - 1);
   };
 
   const goNext = () => {
-    setIndex((current) => (current + 1) % reviews.length);
+    setIndex((current) => (current + 1) % reviews.length - 1);
   };
 
   return (

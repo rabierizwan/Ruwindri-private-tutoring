@@ -41,7 +41,7 @@ export default function About() {
 
             </ul>
           </div>
-          <div className="about-gallery">
+          <div className="about-gallery about-gallery-right">
             <img src={aboutImageTwo} alt="Focused tutoring study moment" />
             <img src={aboutImageThree} alt="Focused tutoring study moment 2" />
           </div>

@@ -12,7 +12,7 @@ export default function Hero() {
                 Build confidence, improve grades, and learn at your own pace with
                 tailored one-on-one tutoring.
               </p>
-              <button>Enquire Now</button>
+              <a className="hero-cta" href="#contact"> Enquire Now</a>
             </div>
             <div className="hero-image">
               <img src={heroImage} alt="Tutor helping a student study" />

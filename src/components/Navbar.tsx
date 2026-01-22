@@ -71,7 +71,7 @@ export default function Navbar() {
                     aria-controls="primary-navigation"
                     onClick={() => setMenuOpen((prev) => !prev)}
                 >
-                    Menu
+                    {menuOpen ? "✕" : "☰"}
                 </button>
                 <div
                     id="primary-navigation"
