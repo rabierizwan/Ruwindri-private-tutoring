@@ -409,10 +409,10 @@ button {
 .reviews {
   margin-top: 3rem;
   padding: 3rem;
-  border-radius: 24px;
-  background: linear-gradient(rgba(36, 36, 157, 0.78), rgba(59, 59, 83, 0.78)),
+  border-radius: 0;
+  background: linear-gradient(rgba(14, 14, 63, 0.78), rgba(13, 13, 35, 0.78)),
     var(--reviews-bg);
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
   color: #f5f5f5;
 }
@@ -426,34 +426,78 @@ button {
 .reviews-track {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(260px, 420px);
-  gap: 1.5rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-  scroll-snap-type: x mandatory;
+  grid-auto-columns: 100%;
+  transition: transform 500ms ease;
 }
 
 .review-card {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  scroll-snap-align: start;
+  background: transparent;
+  border-radius: 0;
+  padding: 1rem 0;
+  border: none;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .review-card p {
   color: #f5f5f5;
-  line-height: 1.7;
+  line-height: 1.75;
+  font-size: 1.25rem;
 }
 
 .review-author {
   margin-top: 1rem;
   font-weight: 600;
+  font-size: 1rem;
 }
 
 .review-stars {
   margin-top: 0.4rem;
   letter-spacing: 0.2em;
+}
+
+.reviews-carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.reviews-arrow {
+  position: absolute;
+  top: 50%;
+  
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(12, 12, 36, 0.65);
+  color: #ffffff;
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.reviews-arrow-prev {
+  left: 0.75rem;
+}
+
+.reviews-arrow-next {
+  right: 0.75rem;
+}
+
+@media (max-width: 720px) {
+  .reviews-arrow {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews-track {
+    transition: none;
+  }
 }
 
 /* =========================
