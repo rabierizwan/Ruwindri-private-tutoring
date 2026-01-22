@@ -2,6 +2,7 @@ import "./index.css";
 import Navbar from "./components/Navbar"; 
 import Hero from './components/Hero';
 import About from "./components/About";
+import Reviews from "./components/Reviews";
 import Services from './components/Services';
 import ContactCTA from './components/ContactCTA';
 import StudyMaterials from "./components/StudyMaterials";
@@ -26,6 +27,7 @@ function App() {
       <Navbar/>
       <Hero/>
       <About/>
+      <Reviews/>
       <Services/>
       <ContactCTA/>
   

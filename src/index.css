@@ -404,6 +404,59 @@ button {
 }
 
 /* =========================
+   REVIEWS
+========================= */
+.reviews {
+  margin-top: 3rem;
+  padding: 3rem;
+  border-radius: 24px;
+  background: linear-gradient(rgba(36, 36, 157, 0.78), rgba(59, 59, 83, 0.78)),
+    var(--reviews-bg);
+  background-size: cover;
+  background-position: center;
+  color: #f5f5f5;
+}
+
+.reviews h2 {
+  margin-bottom: 1.5rem;
+  color: #f5f5f5;
+  size: 10;
+}
+
+.reviews-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(260px, 420px);
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
+}
+
+.review-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  scroll-snap-align: start;
+}
+
+.review-card p {
+  color: #f5f5f5;
+  line-height: 1.7;
+}
+
+.review-author {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.review-stars {
+  margin-top: 0.4rem;
+  letter-spacing: 0.2em;
+}
+
+/* =========================
    SERVICES PREVIEW
 ========================= */
 .services {
