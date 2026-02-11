@@ -183,13 +183,24 @@ export default function StudyMaterials() {
                           <ul>
                           {topic.subtopics.map((subtopic) => (
                             <li key={`${topic.name}-${subtopic.label}`}>
-                              <span>{subtopic.label}</span>
-                              <span className="syllabus-notes">
+                              <span className="syllabus-cell" data-label="Subtopic">
+                                {subtopic.label}
+                              </span>
+                              <span
+                                className={`syllabus-notes syllabus-cell${
+                                  subtopic.details && subtopic.details.length > 0
+                                    ? ""
+                                    : " syllabus-notes--muted"
+                                }`}
+                                data-label="Notes"
+                              >
                                 {subtopic.details && subtopic.details.length > 0
                                   ? subtopic.details.join(", ")
-                                  : "—"}
+                                  : "Covered during lessons"}
                               </span>
-                              <span className="syllabus-price">{subtopic.price ?? "—"}</span>
+                              <span className="syllabus-price syllabus-cell" data-label="Price">
+                                {subtopic.price ?? "—"}
+                              </span>
                             </li>
                           ))}
                           </ul>
@@ -203,9 +214,18 @@ export default function StudyMaterials() {
                           </div>
                           <ul>
                             <li>
-                              <span>Covered in-depth across lessons</span>
-                              <span className="syllabus-notes">—</span>
-                              <span className="syllabus-price">—</span>
+                              <span className="syllabus-cell" data-label="Subtopic">
+                                Covered in-depth across lessons
+                              </span>
+                              <span
+                                className="syllabus-notes syllabus-cell syllabus-notes--muted"
+                                data-label="Notes"
+                              >
+                                Covered during lessons
+                              </span>
+                              <span className="syllabus-price syllabus-cell" data-label="Price">
+                                —
+                              </span>
                             </li>
                           </ul>
                         </>

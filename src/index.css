@@ -423,6 +423,11 @@ button {
   text-align: left;
 }
 
+.syllabus-notes--muted {
+  font-style: italic;
+  opacity: 0.6;
+}
+
 .syllabus-price {
   color: var(--primary-ink);
   font-weight: 600;
@@ -436,12 +441,33 @@ button {
 }
 
 @media (max-width: 640px) {
+  .syllabus-row--head {
+    display: none;
+  }
+
   .syllabus-row,
   .syllabus-topic li {
     grid-template-columns: 1fr;
+    gap: 0.35rem;
   }
 
-  .syllabus-row--head span:last-child,
+  .syllabus-cell {
+    display: grid;
+    grid-template-columns: minmax(120px, 0.6fr) 1fr;
+    gap: 0.6rem;
+    align-items: start;
+  }
+
+  .syllabus-cell::before {
+    content: attr(data-label);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary-ink);
+    opacity: 0.7;
+    font-weight: 700;
+  }
+
   .syllabus-notes,
   .syllabus-price {
     text-align: left;
