@@ -1,8 +1,23 @@
 
+type Subtopic = {
+  label: string;
+  details?: string[];
+  price?: string;
+};
 
+type Topic = {
+  name: string;
+  subtopics: Subtopic[];
+  price?: string;
+};
+
+type Syllabus = {
+  title: string;
+  topics: Topic[];
+};
 
 export default function StudyMaterials() {
-  const syllabi = [
+  const syllabi: Syllabus[] = [
     {
       title: "Year 7-10 Mathematics",
       topics: [{
@@ -30,36 +45,33 @@ export default function StudyMaterials() {
         {
           name: "Trigonometry - $15.99 All Subtopics",
           subtopics: [
-            { label: "Trigonometry 1", details: ["Sector + Segment Area", "Angles"], },
-            { label: "Trigonometry 2" },
-            { label: "Inverse Trigonometry" },
+            { label: "Trigonometry 1", details: ["Sector + Segment Area", "Angles"], price: "$6.99" },
+            { label: "Trigonometry 2", price: "$6.99" },
+            { label: "Inverse Trigonometry", price: "$6.99" },
           ],
-          price: [],
         },
         {
           name: "Calculus - $19.99 All Subtopics",
           subtopics: [
-            { label: "Differential Calculus" },
-            { label: "Geometrical Applications of Differentiation" },
-            { label: "Differentiation of Logarithmic + Exponential Functions" },
-            { label: "Differentiation of Trigonometric Functions" },
+            { label: "Differential Calculus", price: "$6.99" },
+            { label: "Geometrical Applications of Differentiation", price: "$6.99" },
+            { label: "Differentiation of Logarithmic + Exponential Functions", price: "$6.99" },
+            { label: "Differentiation of Trigonometric Functions", price: "$6.99" },
           ],
-          price: [],
         },
         {
           name: "Combinatorics - $11.99 All Subtopics",
           subtopics: [
-            { label: "Binomial Expansion" },
-            { label: "Permutations and Combinations", },
+            { label: "Binomial Expansion", price: "$6.99" },
+            { label: "Permutations and Combinations", price: "$6.99" },
           ],
         },
-        { 
-          name: "Prelim Paper - $16.99 All Papers", 
+        {
+          name: "Prelim Paper - $16.99 All Papers",
           subtopics: [
-            { label: "Paper 1", price: "$9.99" }, 
-            { label: "Paper 2", price: "$9.99" }],
-          price: [],
-        
+            { label: "Paper 1", price: "$9.99" },
+            { label: "Paper 2", price: "$9.99" },
+          ],
         },
       ],
     },
