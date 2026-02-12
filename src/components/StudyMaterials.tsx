@@ -1,4 +1,6 @@
 
+import { bundles } from "./PayButton";
+
 type Subtopic = {
   label: string;
   details?: string[];
@@ -132,6 +134,12 @@ export default function StudyMaterials() {
     },
   ];
 
+  const bundlesBySyllabus = bundles.reduce<Record<string, typeof bundles>>((acc, bundle) => {
+    if (!acc[bundle.syllabus]) acc[bundle.syllabus] = [];
+    acc[bundle.syllabus].push(bundle);
+    return acc;
+  }, {});
+
   return (
     <section className="study-materials">
       <div className="container">
@@ -234,6 +242,43 @@ export default function StudyMaterials() {
                   ))}
                 </div>
               </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="bundle-store">
+          <h2>Bundles</h2>
+          <p className="bundle-store-lead">
+            Purchase complete topic bundles in one click. You’ll be redirected to Stripe for secure
+            checkout.
+          </p>
+          <div className="bundle-syllabus-grid">
+            {Object.entries(bundlesBySyllabus).map(([syllabusTitle, syllabusBundles]) => (
+              <section className="bundle-syllabus" key={syllabusTitle}>
+                <h3>{syllabusTitle}</h3>
+                <div className="bundle-grid">
+                  {syllabusBundles.map((bundle) => (
+                    <article className="bundle-card" key={bundle.id}>
+                      <div className="bundle-card-header">
+                        <h4>{bundle.title}</h4>
+                        <span className="bundle-price">{bundle.price}</span>
+                      </div>
+                      <ul className="bundle-includes">
+                        {bundle.includes.map((item) => (
+                          <li key={`${bundle.id}-${item}`}>{item}</li>
+                        ))}
+                      </ul>
+                      <a
+                        className={`bundle-button${bundle.stripeUrl ? "" : " bundle-button--disabled"}`}
+                        href={bundle.stripeUrl || undefined}
+                        aria-disabled={!bundle.stripeUrl}
+                      >
+                        {bundle.stripeUrl ? "Buy now" : "Link coming soon"}
+                      </a>
+                    </article>
+                  ))}
+                </div>
+              </section>
             ))}
           </div>
         </div>
