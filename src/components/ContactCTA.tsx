@@ -29,7 +29,7 @@ export default function ContactCTA() {
           </div>
           <form
             className="contact-cta-form"
-            action="https://formspree.io/f/xnjjvpzn"
+            action="https://formspree.io/f/xykdezgn"
             method="POST"
           >
             <label>
